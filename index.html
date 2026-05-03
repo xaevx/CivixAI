@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civix AI Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Dashboard Sidebar / Chat Interface -->
+        <aside class="chat-section glass-panel">
+            <header class="chat-header">
+                <div class="logo">
+                    <h1>CIVIX <span class="neon-text">AI</span></h1>
+                    <p>Advanced Electoral Assistant</p>
+                </div>
+                <div class="controls">
+                    <label class="toggle">
+                        <span class="toggle-label">Simple</span>
+                        <input type="checkbox" id="modeToggle">
+                        <span class="slider"></span>
+                        <span class="toggle-label">Deep Dive</span>
+                    </label>
+                </div>
+            </header>
+
+            <main class="chat-container" id="chatContainer">
+                <div class="message ai-message">
+                    <div class="message-content glass-bubble">
+                        <p>System initialized. Welcome to Civix AI. I provide objective, data-driven insights into election processes. How may I assist you today?</p>
+                    </div>
+                </div>
+            </main>
+            
+            <div class="suggestions">
+                <button class="suggestion-btn glass-btn">How does voting work?</button>
+                <button class="suggestion-btn glass-btn">Show election timeline</button>
+                <button class="suggestion-btn glass-btn">Voter registration steps</button>
+            </div>
+
+            <div class="input-area">
+                <form id="chatForm">
+                    <input type="text" id="userInput" placeholder="Query the system..." autocomplete="off">
+                    <button type="submit" id="sendBtn" class="glow-btn">
+                        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                    </button>
+                </form>
+            </div>
+        </aside>
+
+        <!-- Data Visualization Panel -->
+        <main class="data-section">
+            <header class="data-header glass-panel">
+                <h2>Election Context</h2>
+                <div class="selectors">
+                    <select id="electionType" class="glass-select">
+                        <option value="general">General Election</option>
+                        <option value="state">State Elections</option>
+                    </select>
+                    <select id="stateSelect" class="glass-select hidden">
+                        <option value="" disabled selected>Select a State...</option>
+                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="West Bengal">West Bengal</option>
+                        <option value="Bihar">Bihar</option>
+                        <option value="Tamil Nadu">Tamil Nadu</option>
+                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                        <option value="Karnataka">Karnataka</option>
+                        <option value="Gujarat">Gujarat</option>
+                        <option value="Rajasthan">Rajasthan</option>
+                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                        <option value="Kerala">Kerala</option>
+                        <option value="Delhi">Delhi</option>
+                    </select>
+                    <button id="analyzeBtn" class="glow-btn small-btn">Analyze</button>
+                </div>
+            </header>
+
+            <div class="data-grid" id="dataGrid">
+                <!-- Info Card 1 -->
+                <div class="stat-card glass-panel">
+                    <h3>Next Election</h3>
+                    <div class="stat-value neon-text">2029</div>
+                    <p class="stat-desc">Lok Sabha General Election</p>
+                </div>
+                <!-- Info Card 2 -->
+                <div class="stat-card glass-panel">
+                    <h3>Registered Voters</h3>
+                    <div class="stat-value">968M+</div>
+                    <p class="stat-desc">Active Citizens</p>
+                </div>
+                <!-- Info Card 3 -->
+                <div class="stat-card glass-panel">
+                    <h3>Turnout Goal</h3>
+                    <div class="stat-value glow-text">75%</div>
+                    <p class="stat-desc">Target for upcoming cycle</p>
+                </div>
+            </div>
+
+            <div class="chart-container glass-panel">
+                <h2 class="section-title">Historical Voter Turnout</h2>
+                <canvas id="turnoutChart"></canvas>
+            </div>
+
+            <div class="bottom-charts">
+                <div class="chart-container glass-panel half-width">
+                    <h2 class="section-title">Party Seat Distribution</h2>
+                    <canvas id="demographicsChart"></canvas>
+                </div>
+                <div class="info-container glass-panel half-width">
+                    <h2 class="section-title">Critical Timelines</h2>
+                    <ul class="timeline-list">
+                        <li>
+                            <span class="date neon-text">Jan 1</span>
+                            <span class="event">Voter Roll Publication</span>
+                        </li>
+                        <li>
+                            <span class="date neon-text">Mar 15</span>
+                            <span class="event">Election Schedule Announcement</span>
+                        </li>
+                        <li>
+                            <span class="date neon-text">Apr-May</span>
+                            <span class="event">Phased Polling Across India</span>
+                        </li>
+                        <li>
+                            <span class="date neon-text">Jun 4</span>
+                            <span class="event">Counting & Results Declaration</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
